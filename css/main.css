@@ -1,0 +1,54 @@
+body {
+    padding-top: 50px;
+}
+
+#mapDiv {
+    /*min-height: 100px; */
+    /*max-height: 1000px;*/
+    min-height: 100%;
+    max-height: 100%;
+    left: 15px;
+}
+
+.row-map {
+    background: #eee;
+}
+
+[class*="col-"] {
+    background-color: #eee;
+    border: 1px solid #E7E7E7;
+    text-align: center;
+}
+
+.navbar-brand {
+    padding:7px 4px;
+}
+
+.navbar-dark {
+    border-width:0;
+    background-color:#474747;
+    color:#ffffff;
+    font-family:arial,sans-serif;
+    top:0;
+    position:fixed;
+    width:inherit;
+}
+
+.no-col-padding {
+    padding: 0;
+}
+
+.panel-heading a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+    color: grey;
+}
+.panel-heading a.collapsed:after {
+    content:"\e080";
+}
+
+.utilityPanel {
+    padding: 0;
+    width: 100%;
+}

@@ -15,7 +15,7 @@
     <link rel="stylesheet" type="text/css" href="css/sidebar.css">
 
       <script type="text/javascript">
-        var package_path = "//esri.github.com/bootstrap-map-js/src/js";
+        var package_path = "http://esri.github.com/bootstrap-map-js/src/js";
         var dojoConfig = {
             packages: [{
                 name: "application",
@@ -24,7 +24,7 @@
         };
     </script>
     <!-- AGS API reference -->
-    <script src="//js.arcgis.com/3.13compact"></script>
+    <script src="http://js.arcgis.com/3.13" type="application/javascript"></script>
     <!-- jQuery (for Bootstrap's JavaScript plugins) -->
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <!-- Include all  plugins or individual files as needed -->
@@ -33,57 +33,8 @@
     <script src="js/Template.js" type="application/javascript"></script>
     <script src="js/sidebar.js" type="application/javascript"></script>
 
-
   </head>
   <body>
-
-    <!--<div class="navbar navbar-default navbar-dark navbar-fixed-top" role="navigation">-->
-        <!--<div class="container-fluid">-->
-            <!--<div class="navbar-header">-->
-                <!--<a class="navbar-brand" href="usgs.gov">-->
-                    <!--<img alt="USGS logo" src="images/usgs-logo.png">-->
-                <!--</a>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-
-    <!--<div id="content">-->
-        <!--<div class="row">-->
-            <!--<div class="col-xs-8 no-col-padding">-->
-                <!--&lt;!&ndash; Bootstrap-map-js &ndash;&gt;-->
-                <!--<div id="mapDiv"></div>-->
-            <!--</div>-->
-            <!--<div class="col-xs-4">-->
-                <!--<div class="panel-group" id="sidebar">-->
-                    <!--<div class="panel panel-default utilityPanel" id="layerTogglePanel">-->
-                        <!--<div class="panel-heading">-->
-                            <!--<h4 class="panel-title">-->
-                                <!--<a data-toggle="collapse" data-target="#layerToggle" href="#layerToggle">Map Layers</a>-->
-                            <!--</h4>-->
-                        <!--</div>-->
-                        <!--<div id="layerToggle" class="panel-collapse collapse in">-->
-                            <!--<div class="panel-body">-->
-                                <!--<p>Layer 1</p>-->
-                                <!--<p>Layer 2</p>-->
-                                <!--<p>Layer 3</p>-->
-                                <!--<p>Layer 4</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                    <!--<div class="panel panel-default" id="legendPanel">-->
-                        <!--<div class="panel-heading">-->
-                            <!--<h4 class="panel-title">-->
-                                <!--<a data-toggle="collapse" data-target="#legend" href="#legend" class="collapsed">Map Legend</a>-->
-                            <!--</h4>-->
-                        <!--</div>-->
-                        <!--<div id="legend" class="panel-collapse collapse">-->
-                            <!--<div class="panel-body">Legend here</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
 
     <div class="navbar navbar-static navbar-default navbar-fixed-top navbar-dark">
         <div class="container-fluid">
@@ -93,77 +44,56 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="usgs.gov">
+                <a class="navbar-brand" href="http://usgs.gov">
                     <img alt="USGS logo" src="images/usgs-logo.png">
                 </a>
             </div>
-            <button type="button" class="navbar-toggle toggle-right" data-toggle="sidebar" data-target=".sidebar-right">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+            <button id="legendButton" type="button" class="btn btn-default navbar-btn pull-right" ><span class="glyphicon glyphicon-list"></span> Legend</button>
+            <!--<button type="button" class="navbar-toggle toggle-right" data-toggle="sidebar" data-target=".sidebar-right">-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+                <!--<span class="icon-bar"></span>-->
+            <!--</button>-->
         </div>
     </div>
     <!-- Begin page content -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show">
-
-                <div class="panel-group">
-                    <div class="panel panel-default utilityPanel" id="layerTogglePanel">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-target="#layerToggle" href="#layerToggle">Map Layers</a>
-                            </h4>
-                        </div>
-                        <div id="layerToggle" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                            <p>Layer 1</p>
-                            <p>Layer 2</p>
-                            <p>Layer 3</p>
-                            <p>Layer 4</p>
-                            </div>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Map Layers</h3>
                     </div>
-
-                    <!--<div class="panel panel-default" id="legendPanel">-->
-                    <!--<div class="panel-heading">-->
-                    <!--<h4 class="panel-title">-->
-                    <!--<a data-toggle="collapse" data-target="#legend" href="#legend" class="collapsed">Map Legend</a>-->
-                    <!--</h4>-->
-                    <!--</div>-->
-                    <!--<div id="legend" class="panel-collapse collapse">-->
-                    <!--<div class="panel-body">Legend here</div>-->
-                    <!--</div>-->
-                    <!--</div>-->
+                    <div class="panel-body">
+                        <p>Layer 1</p>
+                        <p>Layer 2</p>
+                        <p>Layer 3</p>
+                        <p>Layer 4</p>
+                    </div>
                 </div>
-
             </div>
-
-            <div class="main col-md-9 col-md-offset-3 no-col-padding">
+            <div class="col-md-9 col-md-offset-3 no-col-padding">
+                <div id="legend" class="legend" style="display: none" >
+                    <p>Legend goes here</p>
+                    <div style="margin:6px;">Want to get the legend icons <br> themselves to be non-transparent <br>if possible</div>
+                </div>
                 <!-- Bootstrap-map-js -->
                 <div id="mapDiv"></div>
             </div>
-
             <div class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-right sidebar-animate">
-
-                <div class="panel panel-default" id="legendPanel">
-                <div class="panel-heading">
-                <h4 class="panel-title">
-                <a data-toggle="collapse" data-target="#legend" href="#legend" class="collapsed">Map Legend</a>
-                </h4>
-                </div>
-                <div id="legend" class="panel-collapse collapse">
-                <div class="panel-body">Legend here</div>
-                </div>
-                </div>
-
+                <!--<div class="panel panel-default" id="legendPanel">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<h4 class="panel-title">-->
+                            <!--<a data-toggle="collapse" data-target="#legend" href="#legend" class="collapsed">Map Legend</a>-->
+                        <!--</h4>-->
+                    <!--</div>-->
+                    <!--<div id="legend" class="panel-collapse collapse">-->
+                        <!--<div class="panel-body">Legend here</div>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
-
         </div>
     </div>
-
-
   </body>
 </html>
 

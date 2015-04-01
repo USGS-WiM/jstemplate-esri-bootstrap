@@ -13,3 +13,14 @@ require([
 	      zoom:12
 	    });
 });
+
+
+$(document).ready(function () {
+
+    $("#legendButton").on("click", function () {
+        $("#legend").toggle();
+        //map.invalidateSize();
+        //return false;
+    });
+
+});

@@ -1,5 +1,7 @@
 body {
     padding-top: 50px;
+    background-image: url("../images/wimlogoCompact.png");
+    background-color:#474747;
 }
 
 @media (max-width: 767px) {
@@ -11,9 +13,9 @@ body {
         display: none;
     }
 
-    .basemapThumb {
-        display: none;
-    }
+    /*.basemapThumb {*/
+        /*display: none;*/
+    /*}*/
 }
 
 @media (min-width: 768px) {
@@ -28,6 +30,13 @@ body {
     -moz-border-radius: 5px;
     border-radius: 5px;
 
+}
+
+/*basemapBtn elements manually set to width of widest - temp solution until dynamic solution is implemented */
+.basemapBtn {
+    width: 86px;
+    margin-bottom: 2px;
+    padding:2px;
 }
 
 .legend {

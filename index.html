@@ -30,7 +30,7 @@
     <!-- Include all  plugins or individual files as needed -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!-- refernce to local JS logic -->
-    <script src="js/core.js" type="application/javascript"></script>
+    <script src="js/Template.js" type="application/javascript"></script>
     <script src="js/sidebar.js" type="application/javascript"></script>
 
   </head>
@@ -89,15 +89,13 @@
         </div><!-- /.modal-dialog -->
     </div>
 
-
-
     <!-- Begin page content -->
     <div class="container-fluid">
         <div class="row">
-            <div id="sidebar" class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show no-col-padding">
+            <!--<div id="sidebar" class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-left sidebar-animate sidebar-md-show no-col-padding">-->
+            <div id="sidebar" class="col-xs-11 col-sm-10 col-md-3 col-lg-2 sidebar sidebar-left sidebar-animate sidebar-md-show no-col-padding">
                 <!-- # include line below to get accordion effect with panels - opening one closes the others. remember closing div tag at bottom -->
                 <!--<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">-->
-
                     <!-- include btn-toolbar below to put legend and geosearch buttons next to eachother -->
                     <!--<div class="btn-toolbar" style="margin-bottom: 2px;">-->
                         <!--<div class="btn-group no-col-padding">-->
@@ -116,28 +114,15 @@
                         </div>
                         <div id="basemapsPanel" class="panel-collapse collapse" role="tabpanel" aria-labelledby="basemapsHeader">
                             <div class="panel-body collapse in">
-                                <!--<div id="basemapGallery"></div>-->
-                                <div class="btn-toolbar" style="margin-bottom: 2px;">
-                                    <div class="btn-group">
-                                        <button id="btnStreets" class="btn btn-default"><img class="basemapThumb" alt="" src="images/streets.jpg"><br class="basemapThumb">Streets</button>
-                                        <button id="btnSatellite" class="btn btn-default"><img class="basemapThumb" alt="" src="images/satellite.jpg"><br class="basemapThumb">Satellite</button>
-                                        <button id="btnHybrid" class="btn btn-default"><img class="basemapThumb" alt="" src="images/imagery_labels.jpg"><br class="basemapThumb">Hybrid</button>
-                                    </div>
-                                </div>
-                                <div class="btn-toolbar" style="margin-bottom: 2px;">
-                                    <div class="btn-group">
-                                        <button id="btnOSM" class="btn btn-default"><img class="basemapThumb" alt="" src="images/osm.jpg"><br class="basemapThumb">OSM</button>
-                                        <button id="btnNatGeo" class="btn btn-default"><img class="basemapThumb" alt="" src="images/natgeo.jpg"><br class="basemapThumb">NatGeo</button>
-                                        <button id="btnNatlMap" class="btn btn-default"><img class="basemapThumb" alt="" src="images/national_map.jpg"><br class="basemapThumb">Nat'l Map</button>
-                                    </div>
-                                </div>
-                                <div class="btn-toolbar">
-                                    <div class="btn-group">
-                                        <button id="btnTopo" class="btn btn-default"><img class="basemapThumb" alt="" src="images/topo.jpg"><br class="basemapThumb">Topo</button>
-                                        <button id="btnTerrain" class="btn btn-default"><img class="basemapThumb" alt="" src="images/terrain.jpg"><br class="basemapThumb">Terrain</button>
-                                        <button id="btnGray" class="btn btn-default"><img class="basemapThumb" alt="" src="images/gray.jpg"><br class="basemapThumb">Gray</button>
-                                    </div>
-                                </div>
+                                <button id="btnStreets" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/streets.jpg"><br class="basemapThumb">Streets</button>
+                                <button id="btnSatellite" class="btn btn-default basemapBtn equalize" ><img class="basemapThumb" alt="" src="images/satellite.jpg"><br class="basemapThumb">Satellite</button>
+                                <button id="btnHybrid" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/imagery_labels.jpg"><br class="basemapThumb">Hybrid</button>
+                                <button id="btnTopo" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/topo.jpg"><br class="basemapThumb">Topo</button>
+                                <button id="btnTerrain" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/terrain.jpg"><br class="basemapThumb">Terrain</button>
+                                <button id="btnGray" class="btn btn-default basemapBtn equalize" ><img class="basemapThumb" alt="" src="images/gray.jpg"><br class="basemapThumb">Gray</button>
+                                <button id="btnOSM" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/osm.jpg"><br class="basemapThumb">OSM</button>
+                                <button id="btnNatGeo" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/natgeo.jpg"><br class="basemapThumb">NatGeo</button>
+                                <button id="btnNatlMap" class="btn btn-default basemapBtn equalize"><img class="basemapThumb" alt="" src="images/national_map.jpg"><br class="basemapThumb">Nat'l Map</button>
                             </div>
 
                         </div>
@@ -162,7 +147,7 @@
                 <!-- # closing div tag for accordion style panels -->
                 <!--</div>-->
             </div>
-            <div class="col-md-9 col-md-offset-3 no-col-padding">
+            <div class="col-md-9 col-lg-10 col-md-offset-3 col-lg-offset-2 no-col-padding">
                 <div id="legend" class="legend" style="display: none" >
                     <button id="legendClose" type="button" class="close" data-dismiss="legend" aria-label="Close" aria-hidden="true">x</button>
                     <p>Legend goes here</p>
@@ -170,6 +155,7 @@
                 </div>
                 <!-- Bootstrap-map-js -->
                 <div id="mapDiv"></div>
+
             </div>
             <div class="col-xs-7 col-sm-3 col-md-3 sidebar sidebar-right sidebar-animate">
                 <!--<div class="panel panel-default" id="legendPanel">-->

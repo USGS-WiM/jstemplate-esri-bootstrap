@@ -5,92 +5,77 @@ require([
     "esri/map",
     "application/bootstrapmap",
     "esri/layers/ArcGISTiledMapServiceLayer",
-    "esri/dijit/BasemapGallery",
     "esri/dijit/Geocoder",
     "esri/dijit/PopupTemplate",
     "esri/graphic",
     "esri/geometry/Multipoint",
     "esri/symbols/PictureMarkerSymbol",
-    "esri/dijit/Popup",
     "dojo/dom",
     "dojo/on",
     "dojo/domReady!"
-], function(
+], function (
     Map,
     BootstrapMap,
     ArcGISTiledMapServiceLayer,
-    BasemapGallery,
     Geocoder,
     PopupTemplate,
     Graphic,
     Multipoint,
     PictureMarkerSymbol,
-    Popup,
     dom,
     on
 ) {
     // Get a reference to the ArcGIS Map class
-    var map = BootstrapMap.create("mapDiv",{
-        basemap:"national-geographic",
-        center:[-122.45,37.77],
-        zoom:12
+    var map = BootstrapMap.create("mapDiv", {
+        basemap: "national-geographic",
+        center: [-122.45, 37.77],
+        zoom: 12
     });
 
     var idealMapHeight = $(window).height() - $("#navbar").height();
     $("#mapDiv, #mapDiv_root").height(idealMapHeight + "px");
-    $(window).resize( function () {
+    $(window).resize(function () {
         $("#mapDiv, #mapDiv_root").height(idealMapHeight + "px");
     });
 
-    //var basemapGallery = new BasemapGallery({
-    //    showArcGISBasemaps: false,
-    //    basemaps: ["streets", "satellite"],
-    //    map: map
-    //}, "basemapGallery");
-    //basemapGallery.startup();
-
     var nationalMapBasemap = new ArcGISTiledMapServiceLayer("http://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer");
-
     // these on clicks change the basemap. the map.removeLayer is required for nat'l map b/c it is not officially basemap.
-    on(dom.byId("btnStreets"),"click", function() {
+    on(dom.byId("btnStreets"), "click", function () {
         map.setBasemap("streets");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnSatellite"),"click", function() {
+    on(dom.byId("btnSatellite"), "click", function () {
         map.setBasemap("satellite");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnHybrid"),"click", function() {
+    on(dom.byId("btnHybrid"), "click", function () {
         map.setBasemap("hybrid");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnTerrain"),"click", function() {
+    on(dom.byId("btnTerrain"), "click", function () {
         map.setBasemap("terrain");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnGray"),"click", function() {
+    on(dom.byId("btnGray"), "click", function () {
         map.setBasemap("gray");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnNatGeo"),"click", function() {
+    on(dom.byId("btnNatGeo"), "click", function () {
         map.setBasemap("national-geographic");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnOSM"),"click", function() {
+    on(dom.byId("btnOSM"), "click", function () {
         map.setBasemap("osm");
         map.removeLayer(nationalMapBasemap);
     });
-    on(dom.byId("btnTopo"),"click", function() {
+    on(dom.byId("btnTopo"), "click", function () {
         map.setBasemap("topo");
         map.removeLayer(nationalMapBasemap);
     });
 
-    on(dom.byId("btnNatlMap"),"click", function() {
+    on(dom.byId("btnNatlMap"), "click", function () {
         map.addLayer(nationalMapBasemap);
     });
-
-
-
 
     var geocoder = new Geocoder({
         value: '',
@@ -99,12 +84,12 @@ require([
         arcgisGeocoder: true,
         autoNavigate: false,
         map: map
-    },"geosearch");
+    }, "geosearch");
     geocoder.startup();
     geocoder.on("select", geocodeSelect);
     geocoder.on("findResults", geocodeResults);
     geocoder.on("clear", clearFindGraphics);
-    on(geocoder.inputNode, "keydown", function(e){
+    on(geocoder.inputNode, "keydown", function (e) {
         if (e.keyCode == 13) {
             setSearchExtent();
         }
@@ -113,7 +98,7 @@ require([
     // Symbols
     var sym = createPictureSymbol("../images/purple-pin.png", 0, 12, 13, 24);
 
-    map.on("load", function(e){
+    map.on("load", function (){
         map.infoWindow.set("highlight", false);
         map.infoWindow.set("titleInBody", false);
     });
@@ -122,7 +107,7 @@ require([
     on(dom.byId("btnGeosearch"),"click", geosearch);
 
     // Optionally confine search to map extent
-    function setSearchExtent(){
+    function setSearchExtent (){
         if (dom.byId("chkExtent").checked === 1) {
             geocoder.activeGeocoder.searchExtent = map.extent;
         } else {
@@ -132,7 +117,7 @@ require([
     function geosearch() {
         setSearchExtent();
         var def = geocoder.find();
-        def.then(function(res){
+        def.then(function (res){
             geocodeResults(res);
         });
         // Close modal
@@ -204,17 +189,16 @@ require([
                 "width":xWidth, "height": yHeight
             });
     }
-
     // Show modal dialog
     $(document).ready(function(){
         function showModal() {
             $("#geosearchModal").modal("show");
         }
         // Geosearch nav menu is selected
-        $("#geosearchNav").click(function(e){
+        $("#geosearchNav").click(function(){
             showModal();
         });
-        $("#geosearchNav2").click(function(e){
+        $("#geosearchNav2").click(function(){
             showModal();
         });
     });
@@ -222,13 +206,10 @@ require([
 });
 
 $(document).ready(function () {
-
     $("#legendButtonNavBar, #legendButtonSidebar").on("click", function () {
         $("#legend").toggle();
-        //map.invalidateSize();
         //return false;
     });
-
     $("#legendClose").on("click", function () {
         $("#legend").hide();
     });

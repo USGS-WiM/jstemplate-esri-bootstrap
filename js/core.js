@@ -1,6 +1,10 @@
 /**
  * Created by bdraper on 4/3/2015.
  */
+var allLayers;
+var legendLayers = [];
+var layerArray = [];
+
 require([
     "esri/map",
     "application/bootstrapmap",
@@ -25,6 +29,8 @@ require([
     dom,
     on
 ) {
+    allLayers = STNPubLayers;
+
     // Get a reference to the ArcGIS Map class
     var map = BootstrapMap.create("mapDiv", {
         basemap: "national-geographic",
